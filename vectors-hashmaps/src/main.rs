@@ -50,5 +50,39 @@ fn main() {
     }
     
 
+    //HashMap
+
+    use std::collections::HashMap;
+
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Red"), 50);
+
+    let team_name = String::from("Blue");
+    let score = scores.get(&team_name);
+
+    match score {
+        Some(10) => println!("Blue team has {} points!", 10),
+        _ => println!("There is no such team")
+        
+    }
+    // println!("{:?}",score);
+
+    let teams = vec![String::from("Blue"),String::from("Red")];
+    let initial_scores = vec![10,50];
+
+    let mut scores: HashMap<_,_> =teams.into_iter().zip(initial_scores.into_iter()).collect();
+
+    println!("{:?}",scores);
+
+    let field_name=String::from("Favorite color");
+    let field_value = String::from("Blue");
+
+    let mut map = HashMap::new();
+    map.insert(field_name, field_value);
+
+    println!("{:?}" , map);
 
 }
+
