@@ -58,6 +58,13 @@ fn main() {
 
     scores.insert(String::from("Blue"), 10);
     scores.insert(String::from("Red"), 50);
+    scores.insert(String::from("Red"), 70);
+    scores.entry(String::from("Yellow")).or_insert(55);
+    scores.entry(String::from("Blue")).or_insert(55);
+
+    for (key, value) in &scores {
+        println!("{}:{}",key,value);
+    }
 
     let team_name = String::from("Blue");
     let score = scores.get(&team_name);
@@ -75,6 +82,7 @@ fn main() {
     let mut scores: HashMap<_,_> =teams.into_iter().zip(initial_scores.into_iter()).collect();
 
     println!("{:?}",scores);
+    
 
     let field_name=String::from("Favorite color");
     let field_value = String::from("Blue");
@@ -83,6 +91,19 @@ fn main() {
     map.insert(field_name, field_value);
 
     println!("{:?}" , map);
+
+    //Updating a Value based on the old value
+
+    let text = "hello world wonderful world";
+
+    let mut map = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}",map);
 
 }
 
